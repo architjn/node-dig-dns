@@ -2,10 +2,12 @@ import compact from 'lodash.compact';
 import child from 'child_process';
 
 function parseSection(line, section) {
-  var data = line.toString().split("\"");
-  line = data[0];
   var values = compact(line.toString().split(/\s+/g))
-  if(values[3] === 'TXT') values.push(data[1]);
+	if(values[3] === 'TXT'){
+    var data = line.toString().split("\"");
+    values = compact(data[0].toString().split(/\s+/g))
+    values.push(data[1])
+	}
   if (
     section === 'answer' ||
     section === 'additional') {
