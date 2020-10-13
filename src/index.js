@@ -9,8 +9,13 @@ function parseSection(line, section) {
     section === 'additional') {
       if(values[3] === 'TXT'){
         var data = line.toString().split("\"");
-        values = compact(data[0].toString().split(/\s+/g))
-        values.push(data[1])
+		values = compact(data[0].toString().split(/\s+/g))
+		var finalString = '';
+		for(var i=1;i<values.length;i++){
+			if(i%2!=0)
+				finalString+=data[i];
+		}
+		values.push(finalString)
       } 
       var value = values[values.length - 1];
       if(values[3] === 'MX'){
