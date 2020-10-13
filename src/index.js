@@ -12,7 +12,7 @@ function parseSection(line, section) {
 		values = compact(data[0].toString().split(/\s+/g))
 		var finalString = '';
 		for(var i=1;i<values.length;i++){
-			if(i%2!=0)
+			if(i%2!=0 && data[i])
 				finalString+=data[i];
 		}
 		values.push(finalString)
